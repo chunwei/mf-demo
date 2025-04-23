@@ -1,0 +1,40 @@
+{
+  "name": "mf-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "模块联邦(Module Federation)与pnpm工作空间的最佳实践演示",
+  "keywords": [
+    "module-federation",
+    "pnpm",
+    "workspace",
+    "monorepo",
+    "mirco-frontend"
+  ],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "build": "pnpm run --parallel build",
+    "serve": "pnpm run --parallel serve",
+    "dev:ui": "pnpm --filter @mf-demo/shared-ui dev",
+    "dev:host": "pnpm --filter @mf-demo/host dev",
+    "dev:remote": "pnpm --filter @mf-demo/remote dev",
+    "build:ui": "pnpm --filter @mf-demo/shared-ui build",
+    "build:host": "pnpm --filter @mf-demo/host build",
+    "build:remote": "pnpm --filter @mf-demo/remote build",
+    "serve:host": "pnpm --filter @mf-demo/host serve",
+    "serve:remote": "pnpm --filter @mf-demo/remote serve"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "typescript": "^4.9.3"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=7.0.0"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
+}
