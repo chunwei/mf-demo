@@ -4,11 +4,14 @@
 
 包括：
 - 使用pnpm工作空间管理多个应用和共享库
+- 使用Webpack的模块联邦(Module Federation)实现微前端架构
+- 通过 pnpm 的内容寻址存储可以有效减少重复依赖
 - 通过模块联邦在应用间共享组件
 - 共享依赖以减少重复加载
 - 使用React.lazy和Suspense实现动态加载
+- 每个应用可以独立开发和部署，同时保持集成能力
 - 统一的构建和开发体验
-您可以通过访问 http://localhost:3000 查看主应用，通过 http://localhost:3001 查看远程应用。
+
 
 ## 项目结构
 
@@ -37,6 +40,15 @@
 
 ## 使用方法
 
+### 准备
+```bash
+# 克隆项目到本地：
+git clone https://github.com/chunwei/mf-demo.git
+
+# 进入项目目录：
+cd mf-demo
+```
+
 ### 安装依赖
 
 ```bash
@@ -47,8 +59,10 @@ pnpm install
 
 ```bash
 pnpm dev
-
 ```
+
+您可以通过访问 http://localhost:3000 查看主应用，
+通过 http://localhost:3001 查看远程应用。
 
 ### 构建所有项目
 
