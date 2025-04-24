@@ -1,6 +1,6 @@
 import React, { Suspense, useState } from 'react'
 import { Button, Card } from '@mf-demo/shared-ui'
-
+import ErrorBoundary from './ErrorBoundary'
 // 使用React.lazy动态导入远程模块
 const RemoteApp = React.lazy(() => import('remote/RemoteApp'))
 const RemoteButton = React.lazy(() => import('remote/RemoteButton'))
@@ -31,13 +31,17 @@ const App = () => {
 
         {showRemote && (
           <div style={{ marginTop: '20px' }}>
-            <Suspense fallback={<div>加载远程按钮...</div>}>
-              <RemoteButton />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<div>加载远程按钮...</div>}>
+                <RemoteButton />
+              </Suspense>
+            </ErrorBoundary>
 
-            <Suspense fallback={<div>加载远程应用...</div>}>
-              <RemoteApp />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<div>加载远程应用...</div>}>
+                <RemoteApp />
+              </Suspense>
+            </ErrorBoundary>
           </div>
         )}
       </div>
